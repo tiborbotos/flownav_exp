@@ -61,9 +61,24 @@
 			$bottomNav.css('bottom', 0);
 		}
 
-
 		wScrollBefore = wScrollCurrent;
 	});
 
 })( jQuery, window, document );
 
+
+
+( function ($) {
+
+	$('.js_move-top').click(function () {
+		$('html, body').animate(
+			{
+				scrollTop : 0
+			},
+			{
+				duration: 600,
+				easing: 'easeOutQuart'
+			});
+	});
+
+})(jQuery);
