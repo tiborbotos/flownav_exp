@@ -5,6 +5,8 @@
 	z-index: 1000;
 	top: 0;
 	left: 0;
+
+//	transition: top 0.3s;
 }
 
 .flownav-bottom {
@@ -14,12 +16,14 @@
 	z-index: 1000;
 	bottom: 0;
 	left: 0;
+	transition: bottom 0.4s;
 }
 
 .flownav {
+	background-color: white;
+
 	.page-header {
 		height: 60px;
-		background-color: white;
 
 		.logo {
 			height: 25px;
@@ -37,6 +41,7 @@
 		border: solid 1px #F0F0F0;
 		background-color: #F5F5F5;
 		box-shadow: 0 5px 8px #F0F0F0;
+		clear: both;
 
 		ul {
 			list-style: none;
@@ -54,24 +59,42 @@
 				&.white {
 					background-color: white;
 				}
+
 			}
 		}
 
-		.icon {
-			opacity: 0.33;
-			line-height: 24px;
+		.menu-item-wrapper {
+			width: 100%;
+			height: 36px;
+			display: block;
 			margin-top: 8px;
+
+			&.bordered {
+				border-right: solid 1px rgba(0,0,0,0.05);
+			}
+
+			.icon {
+				opacity: 0.33;
+				line-height: 24px;
+
+				&.wo-label {
+					margin-top: 4px;
+				}
+			}
+
+			.menu-label {
+				color: #7A7A7A;
+				opacity: 0.5;
+				font-size: 10px;
+				line-height: 12px;
+				display: block;
+				text-transform: none;
+				margin-top: 13px;
+				padding: 0;
+				width: 100%;
+			}
 		}
 
-		.menu-label {
-			color: #7A7A7A;
-			opacity: 0.5;
-			font-size: 10px;
-			line-height: 12px;
-			display: block;
-			text-transform: none;
-			margin-top: 13px;
-		}
 
 	}
 }
