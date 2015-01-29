@@ -146,6 +146,23 @@
 				$('.js_user-menu-container').slideDown(200);
 			}
 		});
+
+		$('.js_bottom-user-menu').click(function () {
+			displayTopNavMenuAndResetFlag();
+			scrollToTheTop();
+			$('.js_user-menu').click();
+			/*if ($('.js_bottom-user-menu-container:visible').length === 1) {
+				$('.js_bottom-user-menu').parent().removeClass('highlighted');
+				$('.js_bottom-user-menu-container').slideDown(200);
+			} else {
+				$('.js_bottom-user-menu').parent().addClass('highlighted');
+				$('.js_bottom-user-menu-container').slideUp(200);
+			}*/
+		});
+
+		if ($(window).width() > 640) {
+			alert('This demo is optimized for mobile experience. Try to open it in mobile or resize the browser window');
+		}
 	})();
 
 })( jQuery, window, document );
