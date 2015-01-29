@@ -52,14 +52,13 @@
 			$bottomNav.css('bottom', bottomPosInvisible);
 
 			if (topNavScrolledAwayOnce) {
-				$topNav.animate({ height : 110 }, 200);
 				$topNavMenu.slideDown(200);
 				topNavScrolledAwayOnce = false;
 			}
 		}
 		else if( wScrollDiff > 0 ) { // scrolled up; top nav slides in
 
-			if (wScrollDiff < 3) { // slow scroll
+			if (wScrollDiff < 3 && topNavTop <= -topNavHeight) { // slow scroll
 
 				if (wScrollCurrent < articleTop || wScrollCurrent > articleBottom) { // we don't want to interrupt the user with the top nav (he's reading)
 					$topNav.css( 'top', topNavTop > 0 ? 0 : topNavTop );
@@ -87,7 +86,6 @@
 				if (parseInt($topNav.css('top')) <= -topNavHeight && !topNavScrolledAwayOnce) { // set the flag and hide the top nav menu
 					topNavScrolledAwayOnce = true;
 					$topNavMenu.hide();
-					$topNav.height(60);
 				}
 			}
 		}
