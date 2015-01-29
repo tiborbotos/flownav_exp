@@ -26,14 +26,48 @@
 }
 .flownav .page-header .logo {
   height: 25px;
-  margin: 22px;
+  margin: 18px 0 0 18px;
+  position: absolute;
 }
 .flownav .page-header .menu-square {
   float: right;
-  margin: 11px 22px 0;
+  margin: 7px 22px 0;
 }
 .flownav .page-header .menu-square > span > span {
   background-color: #0093ec;
+}
+.flownav .page-header .next-article-background {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 60px;
+}
+.flownav .page-header .next-article-background .gradient {
+  height: 100%;
+  background-image: linear-gradient(-90deg, #ffffff 19%, rgba(255, 255, 255, 0.52) 100%);
+}
+.flownav .page-header .flownav-next-article span {
+  float: right;
+}
+.flownav .page-header .flownav-next-article .icon {
+  color: #199CF1;
+  padding: 18px 0 0;
+}
+.flownav .page-header .flownav-next-article .next-label,
+.flownav .page-header .flownav-next-article .article-title {
+  display: block;
+  font-size: 10px;
+  line-height: 12px;
+  clear: right;
+}
+.flownav .page-header .flownav-next-article .next-label {
+  color: #199CF1;
+}
+.flownav .page-header .flownav-next-article .article-title {
+  color: rgba(0, 0, 0, 0.2);
+}
+.flownav .page-header .flownav-next-article .next-article-info-container {
+  margin: 15px 10px 0;
 }
 .flownav .flownav-menu {
   height: 50px;

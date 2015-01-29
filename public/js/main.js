@@ -38,7 +38,7 @@
 
 	$window.on( 'scroll', function()
 	{
-		topNavHeight		= $topNav.outerHeight() + 4;
+		topNavHeight		= $topNav.outerHeight() + 4; // +4 because of the shadow
 		dHeight				= $document.height();
 		wHeight				= $window.height();
 		wScrollCurrent		= $window.scrollTop();
@@ -86,8 +86,7 @@
 				$topNav.css( 'top', Math.abs( topNavTop ) > topNavHeight ? -topNavHeight : topNavTop );
 
 				if (parseInt($topNav.css('top')) <= -topNavHeight && !topNavScrolledAwayOnce) { // set the flag and hide the top nav menu
-					topNavScrolledAwayOnce = true;
-					$topNavMenu.css('max-height', '0');
+					hideTopNavMenuAndSetFlag();
 				}
 			}
 		}
@@ -96,13 +95,13 @@
 			$bottomNav.css('bottom', 0);
 		}
 
-		if (wScrollCurrent > (articleBottom - wHeight - topNavHeight) && $('.js_trending span').has('active').length === 0) {
+		if (wScrollCurrent > (articleBottom - wHeight - topNavHeight) &&
+			$('.js_trending span').has('active').length === 0) { // highlight trending icon if we reach the bottom of the page
 			highlightTrendingIcon();
 		}
 
 		wScrollBefore = wScrollCurrent;
 	});
-
 
 
 	function highlightTrendingIcon() {
@@ -112,6 +111,11 @@
 	function displayTopNavMenuAndResetFlag() {
 		$topNavMenu.css('max-height', '60px');
 		topNavScrolledAwayOnce = false;
+	}
+
+	function hideTopNavMenuAndSetFlag() {
+		topNavScrolledAwayOnce = true;
+		$topNavMenu.css('max-height', '0');
 	}
 
 	function scrollToTheTop() {

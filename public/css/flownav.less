@@ -21,6 +21,7 @@
 	transition: bottom 0.4s;
 }
 
+
 .flownav {
 	background-color: white;
 
@@ -29,16 +30,60 @@
 
 		.logo {
 			height: 25px;
-			margin: 22px;
+			margin: 18px 0 0 18px;
+			position: absolute;
 		}
 
 		.menu-square {
 			float: right;
-			margin: 11px 22px 0;
+			margin: 7px 22px 0;
 
 			> span > span {
 				background-color: #0093ec;
 			}
+		}
+
+		.next-article-background {
+			display: none;
+			position: absolute;
+			width: 100%;
+			height: 60px;
+
+			.gradient {
+				height: 100%;
+				background-image: linear-gradient(-90deg, #FFFFFF 19%, rgba(255,255,255,0.52) 100%);
+			}
+		}
+
+		.flownav-next-article {
+			span {
+				float: right;
+			}
+
+			.icon {
+				color: #199CF1;
+				padding: 18px 0 0;
+			}
+
+			.next-label, .article-title {
+				display: block;
+				font-size: 10px;
+				line-height: 12px;
+				clear: right;
+			}
+
+			.next-label {
+				color: #199CF1;
+			}
+
+			.article-title {
+				color: rgba(0, 0, 0, 0.2);
+			}
+
+			.next-article-info-container {
+				margin: 15px 10px 0;
+			}
+
 		}
 	}
 
