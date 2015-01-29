@@ -135,7 +135,7 @@
 				$('.js_search-container').css('max-height', 0);
 			} else {
 				$('.js_search').parent().addClass('highlighted');
-				$('.js_search-container').css('max-height',200);
+				$('.js_search-container').css('max-height', '200px');
 			}
 			$('.js_search').toggleClass('opened');
 		});
@@ -143,10 +143,10 @@
 		$('.js_user-menu').click(function () {
 			if ($('.js_user-menu.opened').length === 1) {
 				$('.js_user-menu').parent().removeClass('highlighted');
-				$('.js_user-menu-container').css('max-height',0);
+				$('.js_user-menu-container').css('max-height', 0);
 			} else {
 				$('.js_user-menu').parent().addClass('highlighted');
-				$('.js_user-menu-container').css('max-height',600);
+				$('.js_user-menu-container').css('max-height', '600px');
 			}
 			$('.js_user-menu').toggleClass('opened');
 		});
