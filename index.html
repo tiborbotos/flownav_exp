@@ -24,16 +24,16 @@
 				<span class="menu-square menu-square--desktop" data-ga="[Kinja Menu, Menu Click, js_pageType]"><span class="icon-hamburger--black icon-hamburger"><span></span><span></span><span></span></span></span>
 			</div>
 
-			<div class="menu">
+			<div class="flownav-menu">
 				<ul class="clearfix">
 					<li>
-						<span class="menu-item-wrapper bordered">
+						<span class="menu-item-wrapper bordered js_search">
 							<span class="icon icon-search"></span>
 							<span class="menu-label proxima">Search blog</span>
 						</span>
 					</li>
 					<li>
-						<span class="menu-item-wrapper bordered">
+						<span class="menu-item-wrapper bordered js_user-menu">
 							<span class="icon icon-user"></span>
 							<span class="menu-label proxima">Your profile</span>
 						</span>
@@ -57,6 +57,28 @@
 						</span>
 					</li>
 				</ul>
+			</div>
+
+			<div class="search js_search-container" style="display: none">
+				<form>
+					<input type="text" placeholder="Search">
+					<button type="submit" class="js_submit button tiny right">Search</button>
+				</form>
+			</div>
+
+			<div class="user-menu js_user-menu-container nav-dropdown" style="display: none">
+
+				<ul class="user-links">
+					<li class="hover-icon"><a href="#" class="js_compose-post-button readonly-hide" data-ga="[User Menu, Compose Post Click, js_pageType]"><span class="icon oversized icon-pencil-alt icon-prepend"></span>Compose post</a></li>
+					<li class="hover-icon"><a href="#" class="js_settings-link readonly-hide" data-ga="[User Menu, Account Settings Click, js_pageType]"><span class="icon oversized icon-gear icon-prepend"></span>Account Settings</a></li>
+					<li class="hover-icon"><a href="//tiborbotos.kinja.com/private" class="js_private-button" data-ga="[User Menu, Private View Click, js_pageType]"><span class="icon oversized icon-lock icon-prepend"></span>Private view</a></li>
+					<li class="hover-icon"><a href="#" class="js_logout-link" data-ga="[User Menu, Logout Click, js_pageType]"><span class="icon oversized icon-x-small icon-prepend"></span>Logout</a></li>
+					<li class="js_manageblog hover-icon"><a href="#" class="js_manageblog-link hover-icon readonly-hide" data-ga="[User Menu, Manage Blog Click, js_pageType]"><span class="icon oversized icon-users icon-prepend"></span>Manage Gizmodo</a></li>
+					<li class="js_salestools hover-icon"><a href="#" class="js_salestools-link hover-icon readonly-hide" data-ga="[User Menu, Business Tool Click, js_pageType]"><i class="icon oversized icon-bubble-right icon-prepend"></i>Biz Tools for Gizmodo</a></li>
+					<li class="js_superuser-tools hover-icon"><a href="#" class="js_createblog-link hover-icon readonly-hide" data-ga="[User Menu, Create Blog Click, js_pageType]"><span class="icon icon-document-add oversized icon-prepend"></span>Create blog</a></li>
+					<li class="js_superuser-tools"><a href="?superuser" class="hover-icon" data-ga="[User Menu, Show Mom Jeans Click, js_pageType]"><span class="icon oversized icon-star icon-prepend"></span>Show Mom Jeans</a></li>
+				</ul>
+
 			</div>
 		</div>
 
@@ -93,7 +115,7 @@
 		</section>
 
 		<div class="flownav-bottom flownav" style="bottom: -100px">
-			<div class="menu">
+			<div class="flownav-menu">
 				<ul>
 					<li>
 						<span class="menu-item-wrapper bordered">

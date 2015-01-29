@@ -7,7 +7,6 @@
 	left: 0;
 
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-//	transition: top 0.3s;
 }
 
 .flownav-bottom {
@@ -41,7 +40,7 @@
 		}
 	}
 
-	.menu {
+	.flownav-menu {
 		height: 50px;
 		border: solid 1px #F0F0F0;
 		background-color: #F5F5F5;
@@ -63,7 +62,9 @@
 				&.white {
 					background-color: white;
 				}
-
+				&.highlighted {
+					background-color: white;
+				}
 			}
 		}
 
@@ -100,7 +101,17 @@
 		}
 
 		.active {
-			color: #0093EC;
+			color: #0093EC !important;
+		}
+
+	}
+
+	.search {
+		padding: 20px 10px 0 20px;
+
+		input {
+			display: inline-block;
+			width: 75%;
 		}
 	}
 }

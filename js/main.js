@@ -14,7 +14,7 @@
 	var topNavSelector		= '.flownav-top',
 		bottomNavSelector 	= '.flownav-bottom',
 		$topNav				= $( topNavSelector),
-		$topNavMenu 		= $( topNavSelector + ' .menu'),
+		$topNavMenu 		= $( topNavSelector + ' .flownav-menu'),
 		$bottomNav  		= $( bottomNavSelector);
 
 	if( !$topNav.length ) return true;
@@ -38,7 +38,7 @@
 
 	$window.on( 'scroll', function()
 	{
-		topNavHeight		= $topNav.outerHeight() + 10;
+		topNavHeight		= $topNav.outerHeight() + 4;
 		dHeight				= $document.height();
 		wHeight				= $window.height();
 		wScrollCurrent		= $window.scrollTop();
@@ -51,20 +51,19 @@
 			$topNav.css( 'top', 0 );
 			$bottomNav.css('bottom', bottomPosInvisible);
 
-			if (topNavScrolledAwayOnce) {
-				$topNavMenu.slideDown(200);
-				topNavScrolledAwayOnce = false;
+			if (topNavScrolledAwayOnce) { // open top nav menu if we reached to top
+				displayTopNavMenuAndResetFlag();
 			}
 		}
 		else if( wScrollDiff > 0 ) { // scrolled up; top nav slides in
 
-			if (wScrollDiff < 3 && topNavTop <= -topNavHeight) { // slow scroll
+			if (wScrollDiff < 5 && topNavTop <= -topNavHeight + 1) { // slow scroll
 
-				if (wScrollCurrent < articleTop || wScrollCurrent > articleBottom) { // we don't want to interrupt the user with the top nav (he's reading)
+				if (wScrollCurrent < articleTop || wScrollCurrent > (articleBottom - wHeight)) { // we don't want to interrupt the user with the top nav (he's reading)
 					$topNav.css( 'top', topNavTop > 0 ? 0 : topNavTop );
 				}
 
-			} else if (wScrollDiff < 7) { // medium scroll, top nav shows up by scrolling, bottom nav stays visible
+			} else if (wScrollDiff < 10) { // medium scroll, top nav shows up by scrolling, bottom nav stays visible
 
 				$topNav.css( 'top', topNavTop > 0 ? 0 : topNavTop );
 
@@ -74,6 +73,9 @@
 				$bottomNav.css('bottom', bottomPosInvisible);
 			}
 
+			if (wScrollCurrent < topNavHeight) { // open top nav menu if we close to the top
+				displayTopNavMenuAndResetFlag();
+			}
 		}
 		else if( wScrollDiff < 0 ) { // scrolled down
 
@@ -92,29 +94,58 @@
 
 		if (wScrollCurrent > topNavHeight && wScrollDiff < 0 && bottomNavBottom < 0) { // bottom nav appears if top nav is not visible
 			$bottomNav.css('bottom', 0);
-			scrolledToTop();
+		}
+
+		if (wScrollCurrent > (articleBottom - wHeight - topNavHeight) && $('.js_trending span').has('active').length === 0) {
+			highlightTrendingIcon();
 		}
 
 		wScrollBefore = wScrollCurrent;
 	});
 
-})( jQuery, window, document );
 
 
-function scrolledToTop() {
-	$('.js_trending span').addClass('active');
-}
+	function highlightTrendingIcon() {
+		$('.js_trending span').addClass('active');
+	}
 
+	function displayTopNavMenuAndResetFlag() {
+		$topNavMenu.slideDown(200);
+		topNavScrolledAwayOnce = false;
+	}
 
-// ACTIONS
-( function ($) {
-
-	$('.js_move-top').click(function () {
+	function scrollToTheTop() {
 		$('html, body').animate({ scrollTop : 0 }, { duration: 600, easing: 'easeOutQuart' });
-	});
+	}
 
-	$('.js_recommend').click(function () {
-		$('.js_recommend span').toggleClass('active');
-	});
+	(function initMenus() {
+		$('.js_move-top').click(function () {
+			scrollToTheTop();
+		});
 
-})(jQuery);
+		$('.js_recommend').click(function () {
+			$('.js_recommend span').toggleClass('active');
+		});
+
+		$('.js_search').click(function () {
+			if ($('.js_search-container:visible').length === 1) {
+				$('.js_search').parent().removeClass('highlighted');
+				$('.js_search-container').slideUp(200);
+			} else {
+				$('.js_search').parent().addClass('highlighted');
+				$('.js_search-container').slideDown(200);
+			}
+		});
+
+		$('.js_user-menu').click(function () {
+			if ($('.js_user-menu-container:visible').length === 1) {
+				$('.js_user-menu').parent().removeClass('highlighted');
+				$('.js_user-menu-container').slideUp(200);
+			} else {
+				$('.js_user-menu').parent().addClass('highlighted');
+				$('.js_user-menu-container').slideDown(200);
+			}
+		});
+	})();
+
+})( jQuery, window, document );

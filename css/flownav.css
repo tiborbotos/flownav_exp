@@ -33,18 +33,18 @@
 .flownav .page-header .menu-square > span > span {
   background-color: #0093ec;
 }
-.flownav .menu {
+.flownav .flownav-menu {
   height: 50px;
   border: solid 1px #F0F0F0;
   background-color: #F5F5F5;
   clear: both;
 }
-.flownav .menu ul {
+.flownav .flownav-menu ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-.flownav .menu ul li {
+.flownav .flownav-menu ul li {
   width: calc(20%);
   display: inline-block;
   text-align: center;
@@ -52,26 +52,29 @@
   float: left;
   height: 50px;
 }
-.flownav .menu ul li.white {
+.flownav .flownav-menu ul li.white {
   background-color: white;
 }
-.flownav .menu .menu-item-wrapper {
+.flownav .flownav-menu ul li.highlighted {
+  background-color: white;
+}
+.flownav .flownav-menu .menu-item-wrapper {
   width: 100%;
   height: 36px;
   display: block;
   margin-top: 8px;
 }
-.flownav .menu .menu-item-wrapper.bordered {
+.flownav .flownav-menu .menu-item-wrapper.bordered {
   border-right: solid 1px rgba(0, 0, 0, 0.05);
 }
-.flownav .menu .menu-item-wrapper .icon {
+.flownav .flownav-menu .menu-item-wrapper .icon {
   opacity: 0.4;
   line-height: 24px;
 }
-.flownav .menu .menu-item-wrapper .icon.wo-label {
+.flownav .flownav-menu .menu-item-wrapper .icon.wo-label {
   margin-top: 4px;
 }
-.flownav .menu .menu-item-wrapper .menu-label {
+.flownav .flownav-menu .menu-item-wrapper .menu-label {
   color: #7A7A7A;
   opacity: 0.5;
   font-size: 10px;
@@ -82,8 +85,15 @@
   padding: 0;
   width: 100%;
 }
-.flownav .menu .active {
-  color: #0093EC;
+.flownav .flownav-menu .active {
+  color: #0093EC !important;
+}
+.flownav .search {
+  padding: 20px 10px 0 20px;
+}
+.flownav .search input {
+  display: inline-block;
+  width: 75%;
 }
 section.content {
   margin-top: 130px;
