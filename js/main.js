@@ -87,7 +87,7 @@
 
 				if (parseInt($topNav.css('top')) <= -topNavHeight && !topNavScrolledAwayOnce) { // set the flag and hide the top nav menu
 					topNavScrolledAwayOnce = true;
-					$topNavMenu.hide();
+					$topNavMenu.css('max-height', '0');
 				}
 			}
 		}
@@ -110,7 +110,7 @@
 	}
 
 	function displayTopNavMenuAndResetFlag() {
-		$topNavMenu.slideDown(200);
+		$topNavMenu.css('max-height', '60px');
 		topNavScrolledAwayOnce = false;
 	}
 
@@ -124,40 +124,37 @@
 		});
 
 		$('.js_recommend').click(function () {
+			console.log('Recommend clicked');
+			console.log($('.js_recommend span'));
 			$('.js_recommend span').toggleClass('active');
 		});
 
 		$('.js_search').click(function () {
-			if ($('.js_search-container:visible').length === 1) {
+			if ($('.js_search.opened').length === 1) {
 				$('.js_search').parent().removeClass('highlighted');
-				$('.js_search-container').slideUp(200);
+				$('.js_search-container').css('max-height', 0);
 			} else {
 				$('.js_search').parent().addClass('highlighted');
-				$('.js_search-container').slideDown(200);
+				$('.js_search-container').css('max-height',200);
 			}
+			$('.js_search').toggleClass('opened');
 		});
 
 		$('.js_user-menu').click(function () {
-			if ($('.js_user-menu-container:visible').length === 1) {
+			if ($('.js_user-menu.opened').length === 1) {
 				$('.js_user-menu').parent().removeClass('highlighted');
-				$('.js_user-menu-container').slideUp(200);
+				$('.js_user-menu-container').css('max-height',0);
 			} else {
 				$('.js_user-menu').parent().addClass('highlighted');
-				$('.js_user-menu-container').slideDown(200);
+				$('.js_user-menu-container').css('max-height',600);
 			}
+			$('.js_user-menu').toggleClass('opened');
 		});
 
 		$('.js_bottom-user-menu').click(function () {
 			displayTopNavMenuAndResetFlag();
 			scrollToTheTop();
 			$('.js_user-menu').click();
-			/*if ($('.js_bottom-user-menu-container:visible').length === 1) {
-				$('.js_bottom-user-menu').parent().removeClass('highlighted');
-				$('.js_bottom-user-menu-container').slideDown(200);
-			} else {
-				$('.js_bottom-user-menu').parent().addClass('highlighted');
-				$('.js_bottom-user-menu-container').slideUp(200);
-			}*/
 		});
 
 		if ($(window).width() > 640) {

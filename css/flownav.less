@@ -16,6 +16,8 @@
 	z-index: 1000;
 	bottom: 0;
 	left: 0;
+	-webkit-transition: bottom 0.4s;
+	-moz-transition: bottom 0.4s;
 	transition: bottom 0.4s;
 }
 
@@ -45,6 +47,12 @@
 		border: solid 1px #F0F0F0;
 		background-color: #F5F5F5;
 		clear: both;
+
+		max-height: 200px;
+		overflow: hidden;
+		-webkit-transition: max-height 0.4s;
+		-moz-transition: max-height 0.4s;
+		transition: max-height 0.4s;
 
 		ul {
 			list-style: none;
@@ -107,12 +115,30 @@
 	}
 
 	.search {
-		padding: 20px 10px 0 20px;
+		overflow: hidden;
+		width: 100%;
+		max-height: 0;
+		-webkit-transition: max-height 0.4s;
+		-moz-transition: max-height 0.4s;
+		transition: max-height 0.4s;
+
+		div {
+			padding: 20px 10px 0 20px;
+		}
 
 		input {
 			display: inline-block;
 			width: 75%;
 		}
+	}
+
+	.user-menu {
+		overflow: hidden;
+		width: 100%;
+		max-height: 0;
+		-webkit-transition: max-height 0.4s;
+		-moz-transition: max-height 0.4s;
+		transition: max-height 0.4s;
 	}
 }
 
