@@ -19,7 +19,9 @@
 
 	if( !$topNav.length ) return true;
 
-	var bottomPosInvisible = -100;
+	var bottomPosInvisible = -100,
+		nextArticleInTopNavVisible = false, // is the next article component is visible in the top navigation header
+		topNavScrolledAwayOnce = false; // has the page scrolled away from the top navigation at least once
 
 	var topNavHeight	= 0,
 		topNavTop		= 0,
@@ -33,8 +35,7 @@
 		bottomNavHeight = 0,
 		bottomNavBottom = -100,
 		articleTop 		= $('.content').offset().top,
-		articleBottom	= $('.comments').offset().top,
-		topNavScrolledAwayOnce = false;
+		articleBottom	= $('.comments').offset().top;
 
 	$window.on( 'scroll', function()
 	{
@@ -47,13 +48,14 @@
 		bottomNavHeight		= $bottomNav.outerHeight(),
 		bottomNavBottom		= parseInt($bottomNav.css('bottom'));
 
-		if( wScrollCurrent <= 0 ) {// scrolled to the very top; top nav sticks to the top
+		if( wScrollCurrent <= 50 ) {// scrolled to the very top; top nav sticks to the top
 			$topNav.css( 'top', 0 );
 			$bottomNav.css('bottom', bottomPosInvisible);
 
 			if (topNavScrolledAwayOnce) { // open top nav menu if we reached to top
 				displayTopNavMenuAndResetFlag();
 			}
+			hideNextArticleInTopNav();
 		}
 		else if( wScrollDiff > 0 ) { // scrolled up; top nav slides in
 
@@ -107,12 +109,21 @@
 		wScrollBefore = wScrollCurrent;
 	});
 
-
 	function showNextArticleInTopNav() {
-		if ($('.flownav-next-article:visible').length === 0) {
-			$('.next-article-background').show();
-			$('.flownav-next-article').show();
-			$('.menu-square').hide();
+		if (!nextArticleInTopNavVisible) {
+			$('.next-article-background').css('opacity', '1');
+			$('.icon-hamburger').css('top', '55px');
+			$('.flownav-next-article').css('top', '20px');
+			nextArticleInTopNavVisible = true;
+		}
+	}
+
+	function hideNextArticleInTopNav() {
+		if (nextArticleInTopNavVisible) {
+			$('.next-article-background').css('opacity', '0');
+			$('.icon-hamburger').css('top', '15px');
+			$('.flownav-next-article').css('top', '-30px');
+			nextArticleInTopNavVisible = false;
 		}
 	}
 
