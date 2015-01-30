@@ -43,7 +43,7 @@
   -moz-transition: top 0.5s;
   transition: top 0.5s;
 }
-.flownav-header .menu-square .icon-hamburger span {
+.flownav-header .menu-square.active > span > span {
   background-color: #0093ec;
 }
 .flownav-header .next-article-background {
@@ -64,7 +64,7 @@
 }
 .flownav-header .next-article-background .gradient {
   height: 100%;
-  background-image: linear-gradient(-90deg, #ffffff 19%, rgba(255, 255, 255, 0.52) 100%);
+  background-image: linear-gradient(-90deg, #ffffff 10%, rgba(255, 255, 255, 0.62) 100%);
 }
 .flownav-header .flownav-next-article {
   position: absolute;

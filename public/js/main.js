@@ -35,7 +35,8 @@
 		bottomNavHeight = 0,
 		bottomNavBottom = -100,
 		articleTop 		= $('.content').offset().top,
-		articleBottom	= $('.comments').offset().top;
+		articleBottom	= $('.comments').offset().top,
+		articlePosition33 = Math.round(articleBottom * 0.33);
 
 	$window.on( 'scroll', function()
 	{
@@ -101,7 +102,7 @@
 			$bottomNav.css('bottom', 0);
 		}
 
-		if (wScrollCurrent > (articleBottom - wHeight - topNavHeight) &&
+		if (wScrollCurrent > articlePosition33 &&
 			$('.js_trending span').has('active').length === 0) { // highlight trending icon if we reach the bottom of the page
 			highlightTrendingIcon();
 		}
@@ -128,6 +129,7 @@
 	}
 
 	function highlightTrendingIcon() {
+		$('.menu-square').removeClass('active');
 		$('.js_trending span').addClass('active');
 	}
 
