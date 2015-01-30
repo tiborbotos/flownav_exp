@@ -17,36 +17,40 @@
 		$topNavMenu 		= $( topNavSelector + ' .flownav-menu'),
 		$bottomNav  		= $( bottomNavSelector);
 
-	if( !$topNav.length ) return true;
-
+	// consts
 	var bottomPosInvisible = -100,
-		nextArticleInTopNavVisible = false, // is the next article component is visible in the top navigation header
-		topNavScrolledAwayOnce = false; // has the page scrolled away from the top navigation at least once
+		bottomNavBottom = -100,
 
-	var topNavHeight	= 0,
+
+		// flags
+		nextArticleInTopNavVisible = false, // is the next article component is visible in the top navigation header
+		topNavScrolledAwayOnce = false, // has the page scrolled away from the top navigation at least once
+
+		// variables
+//		topNavHeight	= 0,
 		topNavTop		= 0,
 		$document		= $( document ),
-		dHeight			= 0,
+//		dHeight			= 0,
 		$window			= $( window ),
-		wHeight			= 0,
+//		wHeight			= 0,
 		wScrollCurrent	= 0,
 		wScrollBefore	= 0,
 		wScrollDiff		= 0,
-		bottomNavHeight = 0,
-		bottomNavBottom = -100,
+//		bottomNavHeight = 0,
 		articleTop 		= $('.content').offset().top,
 		articleBottom	= $('.comments').offset().top,
-		articlePosition33 = Math.round(articleBottom * 0.33);
+		articlePosition33 = Math.round(articleBottom * 0.33),
+
+		dHeight				= $document.height(),
+		wHeight				= $window.height(),
+		topNavHeight		= $topNav.outerHeight() + 4, // +4 because of the shadow
+		bottomNavHeight		= $bottomNav.outerHeight();
 
 	$window.on( 'scroll', function()
 	{
-		topNavHeight		= $topNav.outerHeight() + 4; // +4 because of the shadow
-		dHeight				= $document.height();
-		wHeight				= $window.height();
 		wScrollCurrent		= $window.scrollTop();
 		wScrollDiff			= wScrollBefore - wScrollCurrent;
 		topNavTop			= parseInt( $topNav.css( 'top' ) ) + wScrollDiff;
-		bottomNavHeight		= $bottomNav.outerHeight(),
 		bottomNavBottom		= parseInt($bottomNav.css('bottom'));
 
 		if( wScrollCurrent <= 50 ) {// scrolled to the very top; top nav sticks to the top
