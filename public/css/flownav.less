@@ -56,13 +56,18 @@
 		}
 
 		.flownav-next-article {
+			position: absolute;
+			right: 20px;
+			top: 20px;
+			display: none;
+
 			span {
 				float: right;
 			}
 
 			.icon {
 				color: #199CF1;
-				padding: 18px 0 0;
+//				padding: 18px 0 0;
 			}
 
 			.next-label, .article-title {
@@ -78,12 +83,11 @@
 
 			.article-title {
 				color: rgba(0, 0, 0, 0.2);
+				max-width: 75px;
+				height: 12px;
+				overflow: hidden;
+				text-transform: uppercase;
 			}
-
-			.next-article-info-container {
-				margin: 15px 10px 0;
-			}
-
 		}
 	}
 

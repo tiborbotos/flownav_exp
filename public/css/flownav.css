@@ -46,12 +46,17 @@
   height: 100%;
   background-image: linear-gradient(-90deg, #ffffff 19%, rgba(255, 255, 255, 0.52) 100%);
 }
+.flownav .page-header .flownav-next-article {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  display: none;
+}
 .flownav .page-header .flownav-next-article span {
   float: right;
 }
 .flownav .page-header .flownav-next-article .icon {
   color: #199CF1;
-  padding: 18px 0 0;
 }
 .flownav .page-header .flownav-next-article .next-label,
 .flownav .page-header .flownav-next-article .article-title {
@@ -65,9 +70,10 @@
 }
 .flownav .page-header .flownav-next-article .article-title {
   color: rgba(0, 0, 0, 0.2);
-}
-.flownav .page-header .flownav-next-article .next-article-info-container {
-  margin: 15px 10px 0;
+  max-width: 75px;
+  height: 12px;
+  overflow: hidden;
+  text-transform: uppercase;
 }
 .flownav .flownav-menu {
   height: 50px;

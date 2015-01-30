@@ -73,7 +73,7 @@
 				$bottomNav.css('bottom', bottomPosInvisible);
 			}
 
-			if (wScrollCurrent < topNavHeight) { // open top nav menu if we close to the top
+			if (wScrollCurrent < topNavHeight) { // open top nav menu if we are close to the top
 				displayTopNavMenuAndResetFlag();
 			}
 		}
@@ -87,6 +87,10 @@
 
 				if (parseInt($topNav.css('top')) <= -topNavHeight && !topNavScrolledAwayOnce) { // set the flag and hide the top nav menu
 					hideTopNavMenuAndSetFlag();
+				}
+
+				if (wScrollCurrent > topNavHeight) { // if we are over the top nav height, let's show the next article
+					showNextArticleInTopNav();
 				}
 			}
 		}
@@ -104,18 +108,28 @@
 	});
 
 
+	function showNextArticleInTopNav() {
+		if ($('.flownav-next-article:visible').length === 0) {
+			$('.next-article-background').show();
+			$('.flownav-next-article').show();
+			$('.menu-square').hide();
+		}
+	}
+
 	function highlightTrendingIcon() {
 		$('.js_trending span').addClass('active');
 	}
 
 	function displayTopNavMenuAndResetFlag() {
 		$topNavMenu.css('max-height', '60px');
+		$topNavMenu.css('border', '');
 		topNavScrolledAwayOnce = false;
 	}
 
 	function hideTopNavMenuAndSetFlag() {
 		topNavScrolledAwayOnce = true;
 		$topNavMenu.css('max-height', '0');
+		$topNavMenu.css('border', 'none');
 	}
 
 	function scrollToTheTop() {
@@ -125,6 +139,7 @@
 	(function initMenus() {
 		$('.js_move-top').click(function () {
 			scrollToTheTop();
+			highlightTrendingIcon();
 		});
 
 		$('.js_recommend').click(function () {
