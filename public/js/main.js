@@ -247,8 +247,6 @@
 			onOff(e, '.logo');
 		});
 
-
-		if ()
 		// EOF ANIMATIONS
 
 
