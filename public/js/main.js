@@ -121,7 +121,7 @@
 	function showNextArticleInTopNav() {
 		if (!nextArticleInTopNavVisible) {
 			hideTopNavMenu();
-			$('.next-article-background').addClass('hidden');
+			$('.next-article-background').addClass('visible');
 			$('.icon-hamburger').addClass('hidden');
 			$('.flownav-next-article').addClass('visible');
 			$('.flownav-header .logo').addClass('next-article-displayed');
@@ -131,7 +131,7 @@
 
 	function hideNextArticleInTopNav() {
 		if (nextArticleInTopNavVisible) {
-			$('.next-article-background').removeClass('hidden');
+			$('.next-article-background').removeClass('visible');
 			$('.icon-hamburger').removeClass('hidden');
 			$('.flownav-next-article').removeClass('visible');
 			$('.flownav-header .logo').removeClass('next-article-displayed');
