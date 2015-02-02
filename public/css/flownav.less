@@ -22,7 +22,7 @@
 	top: 0;
 	left: 0;
 
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
 }
 
 // Bottom navigation container (position, transition)
@@ -36,198 +36,214 @@
 	-webkit-transition: bottom 0.4s;
 	-moz-transition: bottom 0.4s;
 	transition: bottom 0.4s;
+
+	box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.25);
 }
 
 // Navigation styles
 .flownav {
 	background-color: white;
 }
-	.flownav-header {
-		height: @mobilenav-header-height;
 
-		.logo {
-			height: @mobilenav-logo-height;
-			margin: @mobilenav-logo-margin 0 0 @mobilenav-logo-margin;
-			position: absolute;
+.flownav-header {
+	height: @mobilenav-header-height;
+
+	// branding logo7
+	.logo {
+		height: @mobilenav-logo-height;
+		margin: @mobilenav-logo-margin 0 0 @mobilenav-logo-margin;
+		position: absolute;
+
+		&.next-article-displayed {
+			height: 16px;
+			margin: 22px 0 0 18px;
 		}
+	}
 
-		.menu-square {
-			float: right;
-			position: absolute;
-			right: @mobilenav-header-margin-right;
-			top: 7px;
-			height: @mobilenav-header-height - 7px;
-			overflow: hidden;
+	// overwriting styles from hamburger menu and positioning, when displayed, next article is not visible
+	.menu-square {
+		float: right;
+		position: absolute;
+		right: @mobilenav-header-margin-right;
+		top: 7px;
+		height: @mobilenav-header-height - 7px;
+		overflow: hidden;
 
-			.icon-hamburger {
-				top: @mobilenav-header-hamburger-top-visible;
-				-webkit-transition: top 0.5s;
-				-moz-transition: top 0.5s;
-				transition: top 0.5s;
-			}
-
-			&.active > span > span {
-				background-color: #0093ec;
-			}
-		}
-
-
-		.next-article-background {
-			opacity: 0;
-			position: absolute;
-			width: 100%;
-			height: @mobilenav-header-height;
-			-webkit-transition: all 500ms cubic-bezier(0.025, 0.625, 0.105, 0.955);
-			-moz-transition: all 500ms cubic-bezier(0.025, 0.625, 0.105, 0.955);
-			-o-transition: all 500ms cubic-bezier(0.025, 0.625, 0.105, 0.955);
-			transition: all 500ms cubic-bezier(0.025, 0.625, 0.105, 0.955); /* custom */
-
-			-webkit-transition-timing-function: cubic-bezier(0.025, 0.625, 0.105, 0.955);
-			-moz-transition-timing-function: cubic-bezier(0.025, 0.625, 0.105, 0.955);
-			-o-transition-timing-function: cubic-bezier(0.025, 0.625, 0.105, 0.955);
-			transition-timing-function: cubic-bezier(0.025, 0.625, 0.105, 0.955); /* custom */
-
-			.gradient {
-				height: 100%;
-				background-image: linear-gradient(-90deg, #ffffff 10%, rgba(255, 255, 255, 0.62) 100%);
-			}
-		}
-
-		.flownav-next-article {
-			position: absolute;
-			right: @mobilenav-header-margin-right;
-			top: @mobilenav-header-nextarticle-top-invisible; // visible: 20px, hidden: -30px
+		.icon-hamburger {
+			top: @mobilenav-header-hamburger-top-visible;
 			-webkit-transition: top 0.5s;
 			-moz-transition: top 0.5s;
 			transition: top 0.5s;
+		}
 
-			span {
-				float: right;
-			}
-
-			.icon {
-				color: #199CF1;
-			}
-
-			.next-label, .article-title {
-				display: block;
-				font-size: 10px;
-				line-height: 12px;
-				clear: right;
-			}
-
-			.next-label {
-				color: #199CF1;
-			}
-
-			.article-title {
-				color: rgba(0, 0, 0, 0.2);
-				max-width: 75px;
-				height: 12px;
-				overflow: hidden;
-				text-transform: uppercase;
-			}
+		&.active > span > span {
+			background-color: #0093ec;
 		}
 	}
 
-	.flownav-menu {
-		height: @mobilenav-menu-height;
-		border: solid 1px #F0F0F0;
-		background-color: #F5F5F5;
-		clear: both;
+	// next article's background image/gradient, when displayed, hamburger is not visible
+	.next-article-background {
+		opacity: 0;
+		position: absolute;
+		width: 100%;
+		height: @mobilenav-header-height;
+		-webkit-transition: all 500ms cubic-bezier(0.025, 0.625, 0.105, 0.955);
+		-moz-transition: all 500ms cubic-bezier(0.025, 0.625, 0.105, 0.955);
+		-o-transition: all 500ms cubic-bezier(0.025, 0.625, 0.105, 0.955);
+		transition: all 500ms cubic-bezier(0.025, 0.625, 0.105, 0.955); /* custom */
 
-		max-height: 200px;
-		overflow: hidden;
-		-webkit-transition: max-height 0.4s;
-		-moz-transition: max-height 0.4s;
-		transition: max-height 0.4s;
+		-webkit-transition-timing-function: cubic-bezier(0.025, 0.625, 0.105, 0.955);
+		-moz-transition-timing-function: cubic-bezier(0.025, 0.625, 0.105, 0.955);
+		-o-transition-timing-function: cubic-bezier(0.025, 0.625, 0.105, 0.955);
+		transition-timing-function: cubic-bezier(0.025, 0.625, 0.105, 0.955); /* custom */
 
-		ul {
-			list-style: none;
-			padding: 0;
-			margin: 0;
+		.gradient {
+			height: 100%;
+			background-image: linear-gradient(-90deg, #ffffff 10%, rgba(255, 255, 255, 0.62) 100%);
+		}
+	}
 
-			li {
-				width: calc(20%);
-				display: inline-block;
-				text-align: center;
-				font-size: 8px;
-				float: left;
-				height: @mobilenav-menu-height;
+	// next article's title and next article label, when displayed, hamburger is not visible
+	.flownav-next-article {
+		position: absolute;
+		right: @mobilenav-header-margin-right;
+		top: @mobilenav-header-nextarticle-top-invisible; // hidden: -30px
+		-webkit-transition: top 0.5s;
+		-moz-transition: top 0.5s;
+		transition: top 0.5s;
 
-				&.white {
-					background-color: white;
-				}
-				&.highlighted {
-					background-color: white;
-				}
-			}
+		span {
+			float: right;
 		}
 
-		.menu-item-wrapper {
-			width: 100%;
-			height: @mobilenav-menuitemwrapper-height;
+		.icon {
+			color: #199CF1;
+			margin: 5px 0 0 20px;
+		}
+
+		.next-label, .article-title {
 			display: block;
-			margin-top: 8px;
-
-			&.bordered {
-				border-right: solid 1px rgba(0, 0, 0, 0.05);
-			}
-
-			.icon {
-				opacity: 0.4;
-				line-height: 24px;
-
-				&.wo-label {
-					margin-top: @mobilenav-menuitemwrapper-icon-nolabel-margintop;
-				}
-			}
-
-			.menu-label {
-				color: #7A7A7A;
-				opacity: 0.5;
-				font-size: 10px;
-				line-height: 12px;
-				display: block;
-				text-transform: none;
-				margin-top: @mobilenav-menuitemwrapper-menulabel-margintop;
-				padding: 0;
-				width: 100%;
-			}
+			line-height: 18px;
+			clear: right;
 		}
 
-		.active {
-			color: #0093EC !important;
+		.next-label {
+			color: #199CF1;
+			font-size: 14px;
 		}
 
+		.article-title {
+			color: rgba(0, 0, 0, 0.2);
+			font-size: 11px;
+			max-width: 75px;
+			overflow: hidden;
+			text-transform: uppercase;
+		}
 	}
+}
 
-	.search {
-		overflow: hidden;
-		width: 100%;
-		max-height: 0;
-		-webkit-transition: max-height 0.4s;
-		-moz-transition: max-height 0.4s;
-		transition: max-height 0.4s;
+.flownav-menu {
+	height: @mobilenav-menu-height;
+	border: solid 1px #F0F0F0;
+	background-color: #F5F5F5;
+	clear: both;
 
-		div {
-			padding: 20px 10px 0 20px;
-		}
+	max-height: 200px;
+	overflow: hidden;
+	-webkit-transition: max-height 0.4s;
+	-moz-transition: max-height 0.4s;
+	transition: max-height 0.4s;
 
-		input {
+	// flow navigation menu
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+
+		li {
+			width: calc(20%);
 			display: inline-block;
-			width: 75%;
+			text-align: center;
+			font-size: 8px;
+			float: left;
+			height: @mobilenav-menu-height;
+
+			&.white {
+				background-color: white;
+			}
+			&.highlighted {
+				background-color: white;
+			}
 		}
 	}
 
-	.user-menu {
-		overflow: hidden;
+	.menu-item-wrapper {
 		width: 100%;
-		max-height: 0;
-		-webkit-transition: max-height 0.4s;
-		-moz-transition: max-height 0.4s;
-		transition: max-height 0.4s;
+		height: @mobilenav-menuitemwrapper-height;
+		display: block;
+		margin-top: 8px;
+
+		&.bordered {
+			border-right: solid 1px rgba(0, 0, 0, 0.05);
+		}
+
+		.icon {
+			opacity: 0.4;
+			line-height: 24px;
+			font-size: 20px;
+
+			&.wo-label {
+				margin-top: @mobilenav-menuitemwrapper-icon-nolabel-margintop;
+				font-size: 24px;
+			}
+		}
+
+		.menu-label {
+			color: #7A7A7A;
+			opacity: 0.7;
+			font-size: 12px;
+			line-height: 12px;
+			display: block;
+			text-transform: none;
+			margin-top: @mobilenav-menuitemwrapper-menulabel-margintop;
+			padding: 0;
+			width: 100%;
+		}
 	}
+
+	.active {
+		color: #0093EC !important;
+	}
+}
+
+// search menu - demo
+.search {
+	overflow: hidden;
+	width: 100%;
+	max-height: 0;
+	-webkit-transition: max-height 0.4s;
+	-moz-transition: max-height 0.4s;
+	transition: max-height 0.4s;
+
+	div {
+		padding: 20px 10px 0 20px;
+	}
+
+	input {
+		display: inline-block;
+		width: 75%;
+	}
+}
+
+// user menu - demo
+.user-menu {
+	overflow: hidden;
+	width: 100%;
+	max-height: 0;
+	-webkit-transition: max-height 0.4s;
+	-moz-transition: max-height 0.4s;
+	transition: max-height 0.4s;
+}
 
 
 

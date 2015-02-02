@@ -18,8 +18,8 @@
 		$bottomNav  		= $( bottomNavSelector);
 
 	// consts
-	var bottomPosInvisible = -100,
-		bottomNavBottom = -100,
+	var bottomNavPosInvisible	= -100,
+		
 
 
 		// flags
@@ -27,16 +27,13 @@
 		topNavScrolledAwayOnce = false, // has the page scrolled away from the top navigation at least once
 
 		// variables
-//		topNavHeight	= 0,
 		topNavTop		= 0,
+		bottomNavBottom	= 0,
 		$document		= $( document ),
-//		dHeight			= 0,
 		$window			= $( window ),
-//		wHeight			= 0,
 		wScrollCurrent	= 0,
 		wScrollBefore	= 0,
 		wScrollDiff		= 0,
-//		bottomNavHeight = 0,
 		articleTop 		= $('.content').offset().top,
 		articleBottom	= $('.comments').offset().top,
 		articlePosition33 = Math.round(articleBottom * 0.33),
@@ -55,7 +52,7 @@
 
 		if( wScrollCurrent <= 50 ) {// scrolled to the very top; top nav sticks to the top
 			$topNav.css( 'top', 0 );
-			$bottomNav.css('bottom', bottomPosInvisible);
+			$bottomNav.css('bottom', bottomNavPosInvisible);
 
 			if (topNavScrolledAwayOnce) { // open top nav menu if we reached to top
 				displayTopNavMenuAndResetFlag();
@@ -77,7 +74,7 @@
 			} else { // fast scroll, top nav shows up fast, bottom nav disappers
 
 				$topNav.css( 'top', topNavTop > 0 ? 0 : topNavTop );
-				$bottomNav.css('bottom', bottomPosInvisible);
+				$bottomNav.css('bottom', bottomNavPosInvisible);
 			}
 
 			if (wScrollCurrent < topNavHeight) { // open top nav menu if we are close to the top
@@ -118,7 +115,8 @@
 		if (!nextArticleInTopNavVisible) {
 			$('.next-article-background').css('opacity', '1');
 			$('.icon-hamburger').css('top', '55px');
-			$('.flownav-next-article').css('top', '20px');
+			$('.flownav-next-article').css('top', '15px');
+			$('.flownav-header .logo').addClass('next-article-displayed');
 			nextArticleInTopNavVisible = true;
 		}
 	}
@@ -128,6 +126,7 @@
 			$('.next-article-background').css('opacity', '0');
 			$('.icon-hamburger').css('top', '15px');
 			$('.flownav-next-article').css('top', '-30px');
+			$('.flownav-header .logo').removeClass('next-article-displayed');
 			nextArticleInTopNavVisible = false;
 		}
 	}
