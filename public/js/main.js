@@ -15,16 +15,9 @@
 		bottomNavSelector 	= '.flownav-bottom',
 		$topNav				= $( topNavSelector),
 		$topNavMenu 		= $( topNavSelector + ' .flownav-menu'),
-		$bottomNav  		= $( bottomNavSelector);
+		$bottomNav  		= $( bottomNavSelector),
 
-	// consts
-	var hamburgerMenuHiddenPos 	= '55px',
-		hamburgerMenuVisiblePos	= '15px',
-		nextArticleVisiblePos	= '15px',
-		nextArticleHiddenPos	= '-30px',
-
-
-		// flags
+	// flags
 		nextArticleInTopNavVisible = false, // is the next article component is visible in the top navigation header
 		topNavScrolledAwayOnce = false, // has the page scrolled away from the top navigation at least once
 
@@ -80,7 +73,7 @@
 		else if( wScrollDiff < 0 ) { // scrolled down
 
 			if( wScrollCurrent + wHeight >= dHeight - topNavHeight ) { // scrolled to the very bottom; top nav slides in
-				displayTopNavMenu();
+				showTopNavMenu();
 				hideNextArticleInTopNav();
 				showTopNavBySlideIn();
 				showBottomNav();
@@ -102,7 +95,7 @@
 			}
 		}
 
-		if (wScrollCurrent > topNavHeight && wScrollDiff < 0 && $bottomNav.is('hidden')) { // bottom nav appears if top nav is not visible
+		if (wScrollCurrent > topNavHeight && wScrollDiff < 0 && $bottomNav.is('.hidden')) { // bottom nav appears if top nav is not visible
 			showBottomNav();
 		}
 
@@ -128,9 +121,9 @@
 	function showNextArticleInTopNav() {
 		if (!nextArticleInTopNavVisible) {
 			hideTopNavMenu();
-			$('.next-article-background').css('opacity', '1');
-			$('.icon-hamburger').css('top',  hamburgerMenuHiddenPos);
-			$('.flownav-next-article').css('top', nextArticleVisiblePos);
+			$('.next-article-background').addClass('hidden');
+			$('.icon-hamburger').addClass('hidden');
+			$('.flownav-next-article').addClass('visible');
 			$('.flownav-header .logo').addClass('next-article-displayed');
 			nextArticleInTopNavVisible = true;
 		}
@@ -138,9 +131,9 @@
 
 	function hideNextArticleInTopNav() {
 		if (nextArticleInTopNavVisible) {
-			$('.next-article-background').css('opacity', '0');
-			$('.icon-hamburger').css('top', hamburgerMenuVisiblePos);
-			$('.flownav-next-article').css('top', nextArticleHiddenPos);
+			$('.next-article-background').removeClass('hidden');
+			$('.icon-hamburger').removeClass('hidden');
+			$('.flownav-next-article').removeClass('visible');
 			$('.flownav-header .logo').removeClass('next-article-displayed');
 			nextArticleInTopNavVisible = false;
 		}
@@ -159,19 +152,17 @@
 		$('.js_trending span').addClass('active');
 	}
 
-	function displayTopNavMenu() {
-		$topNavMenu.css('max-height', '60px');
-		$topNavMenu.css('border', '');
+	function showTopNavMenu() {
+		$topNavMenu.removeClass('hidden');
 	}
 
 	function displayTopNavMenuAndResetFlag() {
-		displayTopNavMenu();
+		showTopNavMenu();
 		topNavScrolledAwayOnce = false;
 	}
 
 	function hideTopNavMenu() {
-		$topNavMenu.css('max-height', '0');
-		$topNavMenu.css('border', 'none');
+		$topNavMenu.addClass('hidden');
 	}
 
 	function hideTopNavMenuAndSetFlag() {
