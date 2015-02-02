@@ -17,6 +17,8 @@
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.15);
 }
 .flownav-bottom.hidden {
+  -ms-transform: translateY(50px);
+  -webkit-transform: translateY(50px);
   transform: translateY(50px);
 }
 .flownav {
@@ -46,6 +48,8 @@
   top: 15px;
 }
 .flownav-header .menu-square .icon-hamburger.hidden {
+  -ms-transform: translateY(50px);
+  -webkit-transform: translateY(50px);
   transform: translateY(50px);
 }
 .flownav-header .menu-square.active > span > span {
@@ -70,6 +74,8 @@
   top: -30px;
 }
 .flownav-header .flownav-next-article.visible {
+  -ms-transform: translateY(45px);
+  -webkit-transform: translateY(45px);
   transform: translateY(45px);
 }
 .flownav-header .flownav-next-article span {
