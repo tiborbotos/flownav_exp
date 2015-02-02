@@ -214,6 +214,45 @@
 			$('.js_user-menu').click();
 		});
 
+
+
+		// ANIMATIONS
+		function onOff(evt, clazz) {
+			var $el = $(clazz);
+			if ($el.is('.transition-enabled')) {
+				$el.removeClass('transition-enabled');
+				evt.currentTarget.textContent = evt.currentTarget.textContent.replace('on', 'off');
+			} else {
+				$el.addClass('transition-enabled');
+				evt.currentTarget.textContent = evt.currentTarget.textContent.replace('off', 'on');
+			}
+		}
+
+		$('.js_anim_bottom').click(function (e) {
+			onOff(e, '.flownav-bottom');
+		});
+		$('.js_anim_hamburger').click(function (e) {
+			onOff(e, '.icon-hamburger');
+		});
+		$('.js_anim_nextart').click(function (e) {
+			onOff(e, '.flownav-next-article');
+		});
+		$('.js_anim_nextartbg').click(function (e) {
+			onOff(e, '.next-article-background');
+		});
+		$('.js_anim_menu').click(function (e) {
+			onOff(e, '.flownav-menu');
+		});
+		$('.js_anim_logo').click(function (e) {
+			onOff(e, '.logo');
+		});
+
+
+		if ()
+		// EOF ANIMATIONS
+
+
+
 		if ($(window).width() > 640) {
 			alert('This demo is optimized for mobile experience. Try to open it in mobile or resize the browser window');
 		}
