@@ -1,12 +1,3 @@
-
-
-/*
- By Osvaldas Valutis, www.osvaldas.info
- Available for use under the MIT License
- */
-
- // JQUERY VERSION:
-
 ( function( $, window, document, undefined )
 {
 	'use strict';
@@ -61,7 +52,7 @@
 				}
 			} else if (wScrollDiff < 10) { // medium scroll, top nav shows up by scrolling, bottom nav stays visible
 				showTopNavByScrolling();
-			} else { // fast scroll, top nav shows up fast, bottom nav disappers
+			} else { // fast scroll, top nav shows up fast, bottom nav disappears
 				showTopNavByScrolling();
 				hideBottomNav();
 			}
@@ -73,8 +64,8 @@
 		else if( wScrollDiff < 0 ) { // scrolled down
 
 			if( wScrollCurrent + wHeight >= dHeight - topNavHeight ) { // scrolled to the very bottom; top nav slides in
-				showTopNavMenu();
-				hideNextArticleInTopNav();
+				showNextArticleInTopNav();
+//				showTopNavMenu();
 				showTopNavBySlideIn();
 				showBottomNav();
 			}
