@@ -8,9 +8,10 @@
 		$topNavMenu 		= $( topNavSelector + ' .flownav-menu'),
 		$bottomNav  		= $( bottomNavSelector),
 
-	// flags
-		nextArticleInTopNavVisible = false, // is the next article component is visible in the top navigation header
-		topNavScrolledAwayOnce = false, // has the page scrolled away from the top navigation at least once
+		// flags
+		nextArticleInTopNavVisible		= false, // is the next article component is visible in the top navigation header
+		topNavScrolledAwayOnce			= false, // has the page scrolled away from the top navigation at least once
+		menuContentVisible				= false,
 
 		// variables
 		topNavTop		= 0,
@@ -28,6 +29,7 @@
 		wHeight				= $window.height(),
 		topNavHeight		= $topNav.outerHeight() + 4; // +4 because of the shadow's blur
 
+
 	$window.on( 'scroll', function()
 	{
 		wScrollCurrent		= $window.scrollTop();
@@ -44,7 +46,7 @@
 			}
 			hideNextArticleInTopNav();
 		}
-		else if( wScrollDiff > 0 ) { // scrolled up; top nav slides in
+		else if( wScrollDiff > 0 && !menuContentVisible) { // scrolled up; top nav slides in
 
 			if (wScrollDiff < 5 && topNavTop <= -topNavHeight + 1) { // slow scroll
 				if (wScrollCurrent < articleTop || wScrollCurrent > (articleBottom - wHeight)) { // we don't want to interrupt the user with the top nav (he's reading)
@@ -61,11 +63,10 @@
 				displayTopNavMenuAndResetFlag();
 			}
 		}
-		else if( wScrollDiff < 0 ) { // scrolled down
+		else if( wScrollDiff < 0  && !menuContentVisible) { // scrolled down
 
 			if( wScrollCurrent + wHeight >= dHeight - topNavHeight ) { // scrolled to the very bottom; top nav slides in
 				showNextArticleInTopNav();
-//				showTopNavMenu();
 				showTopNavBySlideIn();
 				showBottomNav();
 			}
@@ -81,14 +82,16 @@
 				}
 			}
 
-			if (wScrollCurrent > articlePosition33 && $('.js_trending span').is('active')) { // highlight trending icon if we reach the bottom of the page
+			if (wScrollCurrent > articlePosition33) { // highlight trending icon if we reach the bottom of the page
 				highlightTrendingIcon();
+			}
+
+			//wScrollDiff < 0 && $bottomNav.is('.hidden')  && 
+			if (wScrollCurrent > topNavHeight && !menuContentVisible) { // bottom nav appears if top nav is not visible
+				showBottomNav();
 			}
 		}
 
-		if (wScrollCurrent > topNavHeight && wScrollDiff < 0 && $bottomNav.is('.hidden')) { // bottom nav appears if top nav is not visible
-			showBottomNav();
-		}
 
 		wScrollBefore = wScrollCurrent;
 	});
@@ -139,8 +142,11 @@
 	}
 
 	function highlightTrendingIcon() {
-		$('.menu-square').removeClass('active');
-		$('.js_trending span').addClass('active');
+		var $trending = $('.js_trending span');
+		if (!$trending.is('active')) {
+			$('.menu-square').removeClass('active');
+			$trending.addClass('active');
+		}
 	}
 
 	function showTopNavMenu() {
@@ -165,6 +171,27 @@
 		$('html, body').animate({ scrollTop : 0 }, { duration: 600, easing: 'easeOutQuart' });
 	}
 
+//	function createCookie(name,value,days) {
+//		if (days) {
+//			var date = new Date();
+//			date.setTime(date.getTime()+(days*24*60*60*1000));
+//			var expires = "; expires="+date.toGMTString();
+//		}
+//		else var expires = "";
+//		document.cookie = name+"="+value+expires+"; path=/";
+//	}
+//
+//	function readCookie(name) {
+//		var nameEQ = name + "=";
+//		var ca = document.cookie.split(';');
+//		for(var i=0;i < ca.length;i++) {
+//			var c = ca[i];
+//			while (c.charAt(0)==' ') c = c.substring(1,c.length);
+//			if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+//		}
+//		return null;
+//	}
+
 	(function initMenus() {
 		$('.js_move-top').click(function () {
 			scrollToTheTop();
@@ -180,9 +207,11 @@
 			if ($('.js_search.opened').length === 1) {
 				$search.parent().removeClass('highlighted');
 				$('.js_search-container').css('max-height', 0);
+				menuContentVisible = false;
 			} else {
 				$search.parent().addClass('highlighted');
 				$('.js_search-container').css('max-height', '200px');
+				menuContentVisible = true;
 			}
 			$search.toggleClass('opened');
 		});
@@ -192,11 +221,27 @@
 			if ($('.js_user-menu.opened').length === 1) {
 				$userMenu.parent().removeClass('highlighted');
 				$('.js_user-menu-container').css('max-height', 0);
+				menuContentVisible = false;
 			} else {
 				$userMenu.parent().addClass('highlighted');
 				$('.js_user-menu-container').css('max-height', '600px');
+				menuContentVisible = true;
 			}
 			$userMenu.toggleClass('opened');
+		});
+
+		$('.js_write-post').click(function () {
+			var $writePostMenu = $('.js_write-post');
+			if ($('.js_write-post.opened').length === 1) {
+				$writePostMenu.parent().removeClass('highlighted');
+				$('.js_write-post-container').css('max-height', 0);
+				menuContentVisible = false;
+			} else {
+				$writePostMenu.parent().addClass('highlighted');
+				$('.js_write-post-container').css('max-height', '1000px');
+				menuContentVisible = true;
+			}
+			$writePostMenu.toggleClass('opened');
 		});
 
 		$('.js_bottom-user-menu').click(function () {
