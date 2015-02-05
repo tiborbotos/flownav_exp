@@ -1,0 +1,36 @@
+<html>
+<script type="text/javascript">
+	var canvas, ctx, flag = false,
+			prevX = 0,
+			currX = 0,
+			prevY = 0,
+			currY = 0,
+			dot_flag = false;
+
+	var x = "black",
+			y = 2;
+
+	function init() {
+		canvas = document.getElementById('can');
+		ctx = canvas.getContext("2d");
+		w = canvas.width;
+		h = canvas.height;
+
+//the rectangle is half transparent
+		ctx.fillStyle = "rgba(0, 0, 0, .5)"
+		ctx.beginPath();
+		ctx.arc(50, 50, 20, 0, Math.PI*2, false);
+		ctx.closePath();
+		ctx.fill();
+
+		window.addEventListener("click", function (e) {
+			debugger;
+		});
+	}
+
+</script>
+<body onload="init()">
+<canvas id="can" style="position:fixed;top:0;left:0;bottom: 0;right:0"></canvas>
+<span id="pos" style="position: fixed; top: 0; left:10px; z-index: 100"></span>
+</body>
+</html>

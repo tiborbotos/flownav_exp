@@ -117,10 +117,11 @@
 			position: absolute;
 			height: 100%;
 			width: 100%;
-			opacity: 0.7;
+			opacity: 0.8;
 
-			background-size: 86%;
+			background-size: 80%;
 			background-repeat: no-repeat;
+			background-position-x: 36%;
 		}
 
 		.gradient {
@@ -128,6 +129,12 @@
 			height: 100%;
 			width: 100%;
 			background-image: linear-gradient(-90deg, #ffffff 15%, rgba(255, 255, 255, 0.52) 100%);
+		}
+		.gradient-left {
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			background-image: linear-gradient(90deg, white 10%, rgba(255, 255, 255, 0) 40%);
 		}
 
 		&.visible {
@@ -319,9 +326,13 @@ section.content {
 
 .helloka {
 	margin-top: 25px;
-	a {
-		font-size: 24px;
+
+	p {
 		padding: 15px;
-		display: block;
+
+		a {
+			font-size: 24px;
+			display: block;
+		}
 	}
 }
