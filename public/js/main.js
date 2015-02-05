@@ -23,7 +23,7 @@
 		wScrollDiff		= 0,
 		articleTop 		= $('.content').offset().top,
 		articleBottom	= $('.comments').offset().top,
-		articlePosition33 = Math.round(articleBottom * 0.33),
+		articlePosition33 = Math.round(articleBottom * 0.20),
 
 		dHeight				= $document.height(),
 		wHeight				= $window.height(),
@@ -86,7 +86,7 @@
 				highlightTrendingIcon();
 			}
 
-			//wScrollDiff < 0 && $bottomNav.is('.hidden')  && 
+			//wScrollDiff < 0 && $bottomNav.is('.hidden')  &&
 			if (wScrollCurrent > topNavHeight && !menuContentVisible) { // bottom nav appears if top nav is not visible
 				showBottomNav();
 			}
@@ -250,7 +250,13 @@
 			$('.js_user-menu').click();
 		});
 
-
+		$('.js_next-article').click(function () {
+			if (window.location.pathname === '/article1.html') {
+				window.location.href = 'article2.html';
+			} else if (window.location.pathname === '/article2.html') {
+				window.location.href = 'article1.html';
+			}
+		});
 
 		// ANIMATIONS
 		function onOff(evt, clazz) {

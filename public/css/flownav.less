@@ -8,7 +8,7 @@
 @mobilenav-menu-height: 50px;
 
 @mobilenav-menuitemwrapper-height: 36px;
-@mobilenav-menuitemwrapper-icon-nolabel-margintop: 4px;
+@mobilenav-menuitemwrapper-icon-nolabel-margintop: 6px;
 @mobilenav-menuitemwrapper-menulabel-margintop: 13px;
 
 @mobilenav-bottom-height: 50px;
@@ -118,13 +118,16 @@
 			height: 100%;
 			width: 100%;
 			opacity: 0.7;
+
+			background-size: 86%;
+			background-repeat: no-repeat;
 		}
 
 		.gradient {
 			position: absolute;
 			height: 100%;
 			width: 100%;
-			background-image: linear-gradient(-90deg, #ffffff 10%, rgba(255, 255, 255, 0.52) 100%);
+			background-image: linear-gradient(-90deg, #ffffff 15%, rgba(255, 255, 255, 0.52) 100%);
 		}
 
 		&.visible {
@@ -180,7 +183,7 @@
 			color: rgba(0, 0, 0, 0.4);
 			line-height: 16px;
 			font-size: 12px;
-			max-width: 75px;
+			max-width: 115px;
 			overflow: hidden;
 			text-transform: uppercase;
 		}
@@ -311,5 +314,14 @@
 
 section.content {
 	margin-top: 130px;
+	margin-bottom: 30px;
 }
 
+.helloka {
+	margin-top: 25px;
+	a {
+		font-size: 24px;
+		padding: 15px;
+		display: block;
+	}
+}
