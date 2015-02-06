@@ -213,8 +213,8 @@
 .flownav-menu .menu-item-wrapper .icon.has-notifications:after {
   content: "\2022";
   color: #ED2024;
-  top: 0px;
-  position: absolute;
+  top: -13px;
+  position: relative;
   font-size: 30px;
   margin-left: -7px;
 }
@@ -265,7 +265,7 @@
 }
 section.content {
   margin-top: 130px;
-  margin-bottom: 30px;
+  margin-bottom: 60px;
 }
 .helloka {
   margin-top: 25px;

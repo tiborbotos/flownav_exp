@@ -22,7 +22,7 @@
 		wScrollBefore	= 0,
 		wScrollDiff		= 0,
 		articleTop 		= $('.content').offset().top,
-		articleBottom	= $('.comments').offset().top,
+		articleBottom	= $('.content').outerHeight() + $('.content').offset().top,
 		articlePosition33 = Math.round(articleBottom * 0.20),
 
 		dHeight				= $document.height(),
