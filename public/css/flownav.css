@@ -122,6 +122,9 @@
   -moz-transition: transform 0.5s;
   transition: transform 0.5s;
 }
+.flownav-header .flownav-next-article:active {
+  opacity: 0.5;
+}
 .flownav-header .flownav-next-article span {
   float: right;
 }
@@ -183,6 +186,9 @@
 .flownav-menu ul li.highlighted {
   background-color: white;
 }
+.flownav-menu ul li:active {
+  opacity: 0.5;
+}
 .flownav-menu .menu-item-wrapper {
   width: 100%;
   height: 36px;
@@ -200,6 +206,17 @@
 .flownav-menu .menu-item-wrapper .icon.wo-label {
   margin-top: 6px;
   font-size: 24px;
+}
+.flownav-menu .menu-item-wrapper .icon.has-notifications {
+  color: #0093EC;
+}
+.flownav-menu .menu-item-wrapper .icon.has-notifications:after {
+  content: "\2022";
+  color: #ED2024;
+  top: 0px;
+  position: absolute;
+  font-size: 30px;
+  margin-left: -7px;
 }
 .flownav-menu .menu-item-wrapper .menu-label {
   color: #7A7A7A;
