@@ -1,8 +1,8 @@
 
 .anima {
-    -webkit-animation: animation 2100ms linear both;
+    -webkit-animation: animation 7000ms linear both;
     -webkit-animation-iteration-count: infinite;
-    animation: animation 2100ms linear both;
+    animation: animation 7000ms linear both;
     animation-iteration-count: infinite;
 }
 
