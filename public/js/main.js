@@ -12,7 +12,7 @@
 		nextArticleInTopNavVisible		= false, // is the next article component is visible in the top navigation header
 		topNavScrolledAwayOnce			= false, // has the page scrolled away from the top navigation at least once
 		menuContentVisible				= false,
-		nextArticleAnimationEnabled		= false,
+		nextArticleAnimationEnabled		= true,
 
 		// variables
 		topNavTop		= 0,
