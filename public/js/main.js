@@ -12,6 +12,7 @@
 		nextArticleInTopNavVisible		= false, // is the next article component is visible in the top navigation header
 		topNavScrolledAwayOnce			= false, // has the page scrolled away from the top navigation at least once
 		menuContentVisible				= false,
+		nextArticleAnimationEnabled		= false,
 
 		// variables
 		topNavTop		= 0,
@@ -106,7 +107,6 @@
 
 	function showTopNavBySlideIn() {
 		topNavTop = wScrollCurrent + wHeight - dHeight;
-//		console.log('showTopNavBySlideIn, ' + topNavTop);
 		$topNav.css('top', topNavTop < 0 ? topNavTop : 0);
 	}
 
@@ -121,6 +121,9 @@
 			$('.icon-hamburger').addClass('hidden');
 			$('.flownav-next-article').addClass('visible');
 			$('.flownav-header .logo').addClass('next-article-displayed');
+			if (nextArticleAnimationEnabled) {
+				$('.js_next-article > .icon').addClass('anima');
+			}
 			nextArticleInTopNavVisible = true;
 		}
 	}
@@ -131,6 +134,9 @@
 			$('.icon-hamburger').removeClass('hidden');
 			$('.flownav-next-article').removeClass('visible');
 			$('.flownav-header .logo').removeClass('next-article-displayed');
+			if (nextArticleAnimationEnabled) {
+				$('.js_next-article > .icon').removeClass('anima');
+			}
 			nextArticleInTopNavVisible = false;
 		}
 	}
@@ -268,6 +274,10 @@
 		});
 		$('.js_anim_logo').click(function (e) {
 			onOff(e, '.logo');
+		});
+		$('.js_nextarticle_anima').click(function (e) {
+			onOff(e, '.__________________');
+			nextArticleAnimationEnabled = !nextArticleAnimationEnabled;
 		});
 
 		// EOF ANIMATIONS
