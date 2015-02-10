@@ -209,6 +209,7 @@
 }
 .flownav-menu .menu-item-wrapper .icon.has-notifications {
   color: #0093EC;
+  opacity: 1;
 }
 .flownav-menu .menu-item-wrapper .icon.has-notifications:after {
   content: "\2022";
