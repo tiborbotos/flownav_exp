@@ -238,11 +238,15 @@
 		});
 
 		$('.js_next-article').click(function () {
-			if (window.location.pathname === '/article1.html') {
-				window.location.href = 'article2.html';
-			} else if (window.location.pathname === '/article2.html') {
-				window.location.href = 'article1.html';
-			}
+			document.getElementById('click').play();
+
+			window.setTimeout(function () {
+				if (window.location.pathname === '/article1.html') {
+					window.location.href = 'article2.html';
+				} else if (window.location.pathname === '/article2.html') {
+					window.location.href = 'article1.html';
+				}
+			}, 300);
 		});
 
 		// ANIMATIONS
